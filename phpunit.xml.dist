@@ -16,7 +16,7 @@
          verbose="true"
 >
     <testsuites>
-        <testsuite name="Guzzle Factory Test Suite">
+        <testsuite name="Cache Plugin Test Suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
