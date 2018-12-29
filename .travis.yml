@@ -5,11 +5,33 @@ sudo: false
 matrix:
   include:
     - php: 7.0
+      env:
+        - PHPHTTP_VERSION=^1.9
+    - php: 7.0
+      env:
+        - PHPHTTP_VERSION=^2.0
     - php: 7.1
+      env:
+        - PHPHTTP_VERSION=^1.9
+    - php: 7.1
+      env:
+        - PHPHTTP_VERSION=^2.0
     - php: 7.2
+      env:
+        - PHPHTTP_VERSION=^1.9
+    - php: 7.2
+      env:
+        - PHPHTTP_VERSION=^2.0
     - php: 7.3
+      env:
+        - PHPHTTP_VERSION=^1.9
+    - php: 7.3
+      env:
+        - PHPHTTP_VERSION=^2.0
 
-install: travis_retry composer install --no-suggest --prefer-dist -n -o
+install:
+  - composer require "php-http/client-common:${PHPHTTP_VERSION}" --no-update -n
+  - travis_retry composer install --no-suggest --prefer-dist -n -o
 
 script:
   - if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then vendor/bin/phpunit; fi
