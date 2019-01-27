@@ -7,9 +7,6 @@ matrix:
     - php: 7.0
       env:
         - PHPHTTP_VERSION=^1.9
-    - php: 7.0
-      env:
-        - PHPHTTP_VERSION=^2.0
     - php: 7.1
       env:
         - PHPHTTP_VERSION=^1.9
