@@ -1,39 +1,38 @@
-language: php
-dist: trusty
-sudo: false
+dist: xenial
 
 matrix:
   include:
-    - php: 7.0
-      env:
+    - env:
+        - PHP_VERSION=7.0
         - PHPHTTP_VERSION=^1.9
-    - php: 7.1
-      env:
+    - env:
+        - PHP_VERSION=7.1
         - PHPHTTP_VERSION=^1.9
-    - php: 7.1
-      env:
+    - env:
+        - PHP_VERSION=7.1
         - PHPHTTP_VERSION=^2.0
-    - php: 7.2
-      env:
+    - env:
+        - PHP_VERSION=7.2
         - PHPHTTP_VERSION=^1.9
-    - php: 7.2
-      env:
+    - env:
+        - PHP_VERSION=7.2
         - PHPHTTP_VERSION=^2.0
-    - php: 7.3
-      env:
+    - env:
+        - PHP_VERSION=7.3
         - PHPHTTP_VERSION=^1.9
-    - php: 7.3
-      env:
+    - env:
+        - PHP_VERSION=7.3
         - PHPHTTP_VERSION=^2.0
+
+before_install:
+  - travis_retry docker pull registry.gitlab.com/grahamcampbell/php:$PHP_VERSION
+  - docker run -it -w /data -v ${PWD}:/data:delegated --entrypoint composer registry.gitlab.com/grahamcampbell/php:$PHP_VERSION require "php-http/client-common:${PHPHTTP_VERSION}" --no-update -n
 
 install:
-  - composer require "php-http/client-common:${PHPHTTP_VERSION}" --no-update -n
-  - travis_retry composer install --no-suggest --prefer-dist -n -o
+  - travis_retry docker run -it -w /data -v ${PWD}:/data:delegated --entrypoint composer registry.gitlab.com/grahamcampbell/php:$PHP_VERSION install --no-suggest --prefer-dist -n -o
 
 script:
-  - if [ "$TRAVIS_PHP_VERSION" != "7.0" ]; then vendor/bin/phpunit; fi
-  - if [ "$TRAVIS_PHP_VERSION" == "7.0" ]; then vendor/bin/phpunit --coverage-clover build/logs/clover.xml; fi
+  - docker run -it -w /data -v ${PWD}:/data:delegated --entrypoint vendor/bin/phpunit registry.gitlab.com/grahamcampbell/php:$PHP_VERSION --coverage-clover build/logs/clover.xml
 
 after_script:
-  - if [ "$TRAVIS_PHP_VERSION" == "7.0" ]; then wget https://scrutinizer-ci.com/ocular.phar; fi
-  - if [ "$TRAVIS_PHP_VERSION" == "7.0" ]; then php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml; fi
+  - travis_retry docker run -it -w /data -v ${PWD}:/data:delegated --entrypoint ocular registry.gitlab.com/grahamcampbell/php:$PHP_VERSION code-coverage:upload --format=php-clover build/logs/clover.xml
