@@ -1,7 +1,7 @@
 Cache Plugin
 ============
 
-Cache Plugin is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is strongly based on the [Cache Plugin](https://github.com/php-http/cache-plugin) by the [PHP HTTP Team](http://php-http.org/). This package was created because the original implemenation needed tweaking for my GitHub package, and now I need to share the code with my new GitLab package, thus I have extracted this single class here. Feel free to check out the [releases](https://github.com/GrahamCampbell/Cache-Plugin/releases), [license](LICENSE), [security policy](.github/SECURITY.md), [code of conduct](.github/CODE_OF_CONDUCT.md), and [contribution guidelines](.github/CONTRIBUTING.md).
+Cache Plugin is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is strongly based on the [Cache Plugin](https://github.com/php-http/cache-plugin) by the [PHP HTTP Team](http://php-http.org/). This package was created because the original implemenation needed tweaking for my GitHub package, and now I need to share the code with my new GitLab package, thus I have extracted this single class here. Feel free to check out the [releases](https://github.com/GrahamCampbell/Cache-Plugin/releases), [security policy](https://github.com/GrahamCampbell/Cache-Plugin/security/policy), [license](LICENSE), [code of conduct](.github/CODE_OF_CONDUCT.md), and [contribution guidelines](.github/CONTRIBUTING.md).
 
 <p align="center">
 <a href="https://styleci.io/repos/125631490"><img src="https://styleci.io/repos/125631490/shield" alt="StyleCI Status"></img></a>
@@ -28,7 +28,7 @@ There is no usage documentation for this package as of yet. I would encurage you
 
 ## Security
 
-If you discover a security vulnerability within this package, please send an email to Graham Campbell at graham@alt-three.com. All security vulnerabilities will be promptly addressed. You may view our full policy [here](.github/SECURITY.md).
+If you discover a security vulnerability within this package, please send an email to Graham Campbell at graham@alt-three.com. All security vulnerabilities will be promptly addressed. You may view our full security policy [here](https://github.com/GrahamCampbell/Cache-Plugin/security/policy).
 
 
 ## License
